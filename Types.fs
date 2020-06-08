@@ -2,7 +2,7 @@
 
 [<AutoOpen>]
 module Types =
-    type Player = 
+    type Position = 
         | North 
         | South
         | East
@@ -16,7 +16,7 @@ module Types =
    
     type Contract =
         {
-            Declarer : Player
+            Declarer : Position
             DeclaredSuit : Suit
             DeclaredTricks : int
             Vulnerable : bool
@@ -29,4 +29,29 @@ module Types =
             Tricks : int
         }
 
+    type Pair = 
+        {
+            Id : int
+            PlayerNames : string * string
+        }
 
+    type TravellerEntry =
+        {
+            NSPair : Pair
+            EWPair : Pair
+            Result : HandResult
+        }
+
+    type TravellerEntryScored =
+        {
+            NSPair: Pair
+            EWPair: Pair
+            NSPointResult : int
+            EWPointResult : int
+        }
+
+    type Traveller = 
+        {
+            BoardNumber : int
+            Entries: TravellerEntry list
+        }

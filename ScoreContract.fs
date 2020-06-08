@@ -75,8 +75,9 @@ module ScoreContract =
 
     let private countFailure undertricks contract = 
         match contract.Doubled with
-        | N -> scoreUndoubledFailure undertricks contract.Vulnerable
-        | X -> scoreDoubledFailure undertricks contract.Vulnerable
+        | N  -> scoreUndoubledFailure undertricks contract.Vulnerable
+        | X  -> scoreDoubledFailure undertricks contract.Vulnerable
+        | XX -> failwith "Unimplemented" 
 
     let score (handResult :  HandResult) = 
         match handResult.Tricks with
